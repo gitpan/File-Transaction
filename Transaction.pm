@@ -2,7 +2,8 @@ package File::Transaction;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '0.04';
+$VERSION = '1.00';
+# $Rev: 45 $
 
 use IO::File;
 
@@ -171,7 +172,7 @@ sub commit {
 
 =over
 
-=item *
+=item
 
 If a rename fails or the Perl process is interrupted in the commit()
 method then some files will be updated but others will not.  See
@@ -189,7 +190,7 @@ Nick Cleaton E<lt>nick@cleaton.netE<gt>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2002 Nick Cleaton.  All Rights Reserved.
+Copyright (C) 2002-2003 Nick Cleaton.  All Rights Reserved.
 
 This module is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
