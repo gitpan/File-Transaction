@@ -38,7 +38,9 @@ DESCRIPTION
 
     Files will be committed in the order in which they are added to the
     transaction. This order should be chosen with care to limit the damage
-    to your data if the commit() fails part way through.
+    to your data if the commit() fails part way through. If there is no
+    order that renders a partial commit acceptable then consider using
+    File::Transaction::Atomic instead.
 
 CONSTRUCTORS
     new ( [TMPEXT] )
@@ -79,8 +81,12 @@ METHODS
         Dies on error.
 
 BUGS
-    *   If a rename fails in the commit() method then some files will be
-        updated but others will not.
+    *   If a rename fails or the Perl process is interrupted in the commit()
+        method then some files will be updated but others will not. See
+        File::Transaction::Atomic if that's a problem for you.
+
+SEE ALSO
+    File::Transaction::Atomic
 
 AUTHOR
     Nick Cleaton <nick@cleaton.net>

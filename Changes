@@ -8,3 +8,5 @@
                    commit breaks it as well as a failed rename, and
                    specified the commit order.
 
+0.04  19 Sep 2002  Fixed warnings during make test and added a
+                   reference to File::Transaction::Atomic.

@@ -2,7 +2,7 @@ package File::Transaction;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 use IO::File;
 
@@ -49,7 +49,9 @@ Perl process is interrupted during the commit().
 
 Files will be committed in the order in which they are added to the
 transaction.  This order should be chosen with care to limit the
-damage to your data if the commit() fails part way through.
+damage to your data if the commit() fails part way through.  If there
+is no order that renders a partial commit acceptable then consider
+using L<File::Transaction::Atomic> instead.
 
 =head1 CONSTRUCTORS
 
@@ -171,10 +173,15 @@ sub commit {
 
 =item *
 
-If a rename fails in the commit() method then some files will be
-updated but others will not.
+If a rename fails or the Perl process is interrupted in the commit()
+method then some files will be updated but others will not.  See
+L<File::Transaction::Atomic> if that's a problem for you.
 
 =back
+
+=head1 SEE ALSO
+
+L<File::Transaction::Atomic>
 
 =head1 AUTHOR
 

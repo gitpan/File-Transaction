@@ -77,13 +77,13 @@ $ft->revert;
 is_filecont("t/foo", "wump wump foo\n", "revert after error file unchanged");
 ok(! -e "t/foo.tmp", "revert after error tmpfile removed");
 
-my $ft = File::Transaction->new;
+$ft = File::Transaction->new;
 unlink "t/foo";
 $ft->linewise_rewrite("t/foo", sub { die "this sub should never be called" });
 $ft->commit;
 ok(-e "t/foo" && -s "t/foo" == 0, "linewise_rewrite converts missing to empty");
 
-my $ft = File::Transaction->new('baz');
+$ft = File::Transaction->new('baz');
 string2file("ding dong foo\n", "t/foo");
 $ft->linewise_rewrite("t/foo", sub { s/foo/bar/g });
 is_filecont("t/foobaz", "ding dong bar\n", "linewise_rewrite honors tmpext");
@@ -91,7 +91,7 @@ $ft->commit;
 ok(! -e "t/foobaz", "commit with tmpext deletes tmpfile");
 is_filecont("t/foo", "ding dong bar\n", "commit with tmpext updates t/foo");
 
-my $ft = File::Transaction->new('bar');
+$ft = File::Transaction->new('bar');
 string2file("dong ding foo\n", "t/foo");
 $ft->commit;
 ok(! -e "t/foobar", "revert with tmpext deletes tmpfile");
