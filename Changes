@@ -1,0 +1,6 @@
+
+0.01  05 Sep 2002  Initial release.
+
+0.02  06 Sep 2002  Documented the fact that linewise_rewrite blats
+                   any existing tmpfile.
+
