@@ -4,3 +4,7 @@
 0.02  06 Sep 2002  Documented the fact that linewise_rewrite blats
                    any existing tmpfile.
 
+0.03  10 Sep 2002  Documented the fact that killing Perl during the
+                   commit breaks it as well as a failed rename, and
+                   specified the commit order.
+

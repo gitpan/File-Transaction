@@ -2,7 +2,7 @@ package File::Transaction;
 use strict;
 
 use vars qw($VERSION);
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 use IO::File;
 
@@ -44,7 +44,12 @@ File::Transaction - transactional change to a set of files
 A C<File::Transaction> object encapsulates a change to a set of files,
 performed by writing out a new version of each file first and then
 swapping all of the new versions in.  The set of files can only end up
-in an inconsistent state if a C<rename> system call fails.
+in an inconsistent state if a C<rename> system call fails or if the
+Perl process is interrupted during the commit().
+
+Files will be committed in the order in which they are added to the
+transaction.  This order should be chosen with care to limit the
+damage to your data if the commit() fails part way through.
 
 =head1 CONSTRUCTORS
 
